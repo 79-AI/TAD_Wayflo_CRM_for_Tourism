@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wayflo — CRM sinh ra từ chính công ty tour</title>
+<meta name="description" content="Wayflo — CRM cho công ty tour Việt Nam. Hợp tác giữa The Ant Adventures và Mitel AI JSC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Wayflo — minimalist editorial style, neutral palette + brand accents */
+:root{
+  --ink:#16181A;
+  --ink-soft:#4A4F54;
+  --line:#E4E4E4;
+  --bg:#FFFFFF;
+  --bg-muted:#F6F6F4;
+  --bg-dark:#16181A;
+  --teal:#2BA793;
+  --teal-dark:#1F8A78;
+  --teal-soft:#E9F5F2;
+  --orange:#E8542A;
+  --orange-soft:#FBEBE5;
+  --navy:#243B58;
+  --radius:6px;
+  --max-width:1120px;
+  --font:"Be Vietnam Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-display:"Playfair Display",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+h1,h2,h3{line-height:1.2;margin:0 0 16px;font-weight:600}
+h1,h2{font-family:var(--font-display);letter-spacing:.01em;line-height:1.15}
+h1{font-size:clamp(2.1rem,4.4vw,3.3rem)}
+h2{font-size:clamp(1.5rem,2.6vw,2.05rem)}
+h3{font-size:1.08rem}
+p{margin:0 0 16px;color:var(--ink-soft)}
+a{color:inherit;text-decoration:none}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;font-weight:600;color:var(--teal);margin:0 0 12px}
+.section{padding:96px 0}
+.section-muted{background:var(--bg-muted)}
+.section-dark{background:var(--bg-dark);color:#fff}
+.section-dark h2{color:#fff}
+.section-dark p{color:#B9BEC4}
+.section-header{text-align:center;max-width:640px;margin:0 auto 56px}
+.section-header p{font-size:1.06rem}
+
+/* Buttons */
+.btn{display:inline-block;padding:13px 28px;border-radius:var(--radius);font-weight:600;font-size:.94rem;border:1px solid transparent;cursor:pointer;transition:.18s}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:#C6431F}
+.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:12px}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-word{font-size:1.4rem;font-weight:700;letter-spacing:-.02em}
+.logo-word .way{color:var(--navy)}
+.logo-word .flo{color:var(--teal)}
+.site-nav{display:flex;align-items:center;gap:26px}
+.site-nav a{font-size:.92rem;color:var(--ink)}
+.site-nav a:hover{color:var(--teal)}
+.nav-cta{background:var(--ink);color:#fff !important;padding:9px 20px;border-radius:var(--radius)}
+.nav-cta:hover{background:var(--orange) !important}
+.lang-toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang-btn{border:none;background:transparent;padding:5px 12px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-soft);font-family:inherit}
+.lang-btn.active{background:var(--ink);color:#fff}
+
+/* Hero */
+.hero{padding:96px 0 88px;background:linear-gradient(180deg,rgba(246,246,244,.6) 0%,rgba(255,255,255,1) 100%)}
+.hero-inner{max-width:760px;margin:0 auto;text-align:center}
+.hero .eyebrow{color:var(--orange)}
+.hero h1 em{font-style:italic;color:var(--teal-dark)}
+.hero-subtitle{font-size:1.12rem;max-width:600px;margin:0 auto 8px}
+.hero-actions{display:flex;gap:14px;margin-top:30px;justify-content:center;flex-wrap:wrap}
+.hero-note{font-size:.85rem;color:var(--ink-soft);margin-top:22px;letter-spacing:.01em}
+.hero-note span{white-space:nowrap}
+
+/* App mock */
+.mock-wrap{max-width:920px;margin:64px auto 0}
+.app-mock{background:#fff;border-radius:10px;border:1px solid var(--line);box-shadow:0 24px 60px -24px rgba(22,24,26,.25);overflow:hidden}
+.mock-bar{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);background:#FBFBFA}
+.mock-bar span{width:10px;height:10px;border-radius:50%;background:#E4E4E4}
+.mock-body{display:flex;min-height:380px}
+.mock-side{width:158px;background:linear-gradient(180deg,#1E4D38 0%,#173D2C 100%);padding:14px 10px;display:flex;flex-direction:column;gap:3px}
+.mock-side .s-brand{color:#fff;font-size:11px;font-weight:700;padding:4px 8px 10px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:8px;line-height:1.3}
+.mock-side .s-brand small{display:block;color:#9CC5B0;font-weight:500;font-size:8.5px}
+.mock-side .s-group{color:#7FAE95;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:8px 8px 3px}
+.mock-side .s-item{color:#CFE3D8;font-size:10.5px;padding:5px 8px;border-radius:6px}
+.mock-side .s-item.active{background:var(--teal);color:#fff;font-weight:600}
+.mock-main{flex:1;padding:20px;background:#FAFAF9}
+.mock-main h4{font-size:13px;color:var(--ink);margin:0 0 12px;font-weight:600}
+.kpis{display:flex;gap:8px;margin-bottom:12px}
+.kpi{flex:1;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 11px}
+.kpi .k-label{font-size:8.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.4px}
+.kpi .k-val{font-size:17px;font-weight:700;color:var(--ink)}
+.kpi .k-val.t{color:var(--teal-dark)}
+.kpi .k-val.o{color:var(--orange)}
+.kpi .k-sub{font-size:8.5px;color:var(--ink-soft)}
+.pipeline{display:flex;gap:8px}
+.pl-col{flex:1;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px;min-width:0}
+.pl-col .pl-head{font-size:9px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;margin-bottom:7px;letter-spacing:.4px}
+.pl-card{background:var(--bg-muted);border-radius:6px;padding:7px;margin-bottom:6px;font-size:9.5px;color:var(--ink-soft);line-height:1.45}
+.pl-card b{display:block;color:var(--ink);font-size:10px}
+.pl-card .tag{display:inline-block;margin-top:4px;font-size:8.5px;font-weight:700;padding:2px 7px;border-radius:99px}
+.tag.teal{background:var(--teal-soft);color:var(--teal-dark)}
+.tag.orange{background:var(--orange-soft);color:var(--orange)}
+.tag.navy{background:#EAEDF1;color:var(--navy)}
+
+/* Pain */
+.pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pain-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px}
+.pain-card .num{font-family:var(--font-display);font-size:1.6rem;color:var(--orange);font-weight:600;display:block;margin-bottom:14px}
+.pain-card h3{margin-bottom:8px}
+.pain-card p{font-size:.92rem;margin:0}
+
+/* Workflow (dark) */
+.wf-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
+.wf-step{background:var(--bg-dark);padding:34px 24px}
+.wf-num{font-family:var(--font-display);font-size:1.5rem;color:var(--teal);display:block;margin-bottom:14px}
+.wf-step h3{color:#fff;margin-bottom:8px;font-size:1rem}
+.wf-step p{font-size:.88rem;margin:0}
+
+/* Story */
+.story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+.story h2{margin-bottom:20px}
+.story p{font-size:1.02rem}
+.story .quote{border-left:2px solid var(--teal);padding:6px 0 6px 26px;margin-top:30px;font-family:var(--font-display);font-size:1.18rem;font-style:italic;color:var(--ink);line-height:1.5}
+.story .quote .who{display:block;font-family:var(--font);font-style:normal;font-weight:600;font-size:.85rem;color:var(--ink-soft);margin-top:14px;letter-spacing:.02em}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{background:#fff;padding:38px 30px;text-align:center}
+.stat .num{font-family:var(--font-display);font-size:2.6rem;font-weight:600;color:var(--teal-dark);line-height:1}
+.stat .num.o{color:var(--orange)}
+.stat .lbl{font-size:.85rem;color:var(--ink-soft);margin-top:10px}
+
+/* Founding */
+.founding-box{border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:64px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.slots-chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--orange);color:var(--orange);border-radius:999px;padding:6px 16px;font-size:.8rem;font-weight:600;letter-spacing:.04em;margin-bottom:20px}
+.slots-chip .live{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse2 1.6s infinite}
+@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.35}}
+.founding-box h2{margin-bottom:16px}
+.perks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.perks li{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line);font-size:.98rem;color:var(--ink-soft)}
+.perks li:first-child{padding-top:0}
+.perks li:last-child{border-bottom:none;padding-bottom:0}
+.perks li strong{color:var(--ink)}
+.perks .check{color:var(--teal-dark);font-weight:700;font-size:1rem;line-height:1.6}
+.perks li>span:last-child{flex:1}
+
+/* Demo form */
+.form-card{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:52px}
+.form-card h2{text-align:center;margin-bottom:10px}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:.02em}
+.field input,.field select{width:100%;padding:13px 16px;border:1px solid #D4D4D2;border-radius:var(--radius);font-size:.95rem;font-family:inherit;color:var(--ink);background:#fff}
+.field input:focus,.field select:focus{outline:none;border-color:var(--teal)}
+.form-card .btn{width:100%;font-size:1rem;padding:15px;border:none}
+.form-note{text-align:center;font-size:.82rem;color:var(--ink-soft);margin-top:18px}
+.quick-contact{display:flex;gap:12px;justify-content:center;margin-top:26px;padding-top:26px;border-top:1px solid var(--line)}
+.qc-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:var(--radius);font-size:.88rem;font-weight:600;border:1px solid var(--line);transition:.18s}
+.qc-btn:hover{border-color:var(--ink)}
+.qc-btn.zalo{color:#0068FF}
+.qc-btn.fb{color:#1877F2}
+.qc-label{text-align:center;font-size:.82rem;color:var(--ink-soft);margin-top:20px}
+
+/* Footer */
+footer{background:var(--bg-dark);color:#9BA1A7;padding:52px 0;font-size:.88rem}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-logo{font-size:1.25rem;font-weight:700}
+.foot-logo .way{color:#fff}
+.foot-logo .flo{color:var(--teal)}
+.foot-social{display:flex;gap:12px;align-items:center}
+.foot-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;transition:.18s}
+.foot-social a:hover{background:var(--teal);border-color:var(--teal)}
+
+/* Floating contact */
+.float-contact{position:fixed;right:22px;bottom:22px;display:flex;flex-direction:column;gap:12px;z-index:200}
+.fc-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.22);transition:.18s;position:relative;text-decoration:none}
+.fc-btn:hover{transform:scale(1.08)}
+.fc-btn.zalo{background:#0068FF}
+.fc-btn.fb{background:#1877F2}
+.fc-btn .tip{position:absolute;right:62px;top:50%;transform:translateY(-50%);background:var(--ink);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:var(--radius);white-space:nowrap;opacity:0;pointer-events:none;transition:.18s}
+.fc-btn:hover .tip{opacity:1}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,104,255,.45)}70%{box-shadow:0 0 0 14px rgba(0,104,255,0)}100%{box-shadow:0 0 0 0 rgba(0,104,255,0)}}
+.fc-btn.zalo{animation:pulse 2.2s infinite}
+
+@media(max-width:900px){
+  .section{padding:72px 0}
+  .pain-grid{grid-template-columns:1fr 1fr}
+  .wf-steps{grid-template-columns:1fr 1fr}
+  .story-grid,.founding-box{grid-template-columns:1fr;gap:44px}
+  .founding-box{padding:40px 28px}
+  .form-card{padding:36px 24px}
+  .site-nav a:not(.nav-cta){display:none}
+}
+@media(max-width:560px){
+  .pain-grid,.wf-steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="#">
+      <svg width="30" height="30" viewBox="0 0 40 40"><path d="M6 12 Q10 30 14 22 Q18 14 22 24 Q26 32 30 14" fill="none" stroke="#2BA793" stroke-width="5" stroke-linecap="round"/><circle cx="31" cy="9" r="4" fill="#E8542A"/></svg>
+      <span class="logo-word"><span class="way">Way</span><span class="flo">flo</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="#workflow" data-i18n="nav_features">Tính năng</a>
+      <a href="#story" data-i18n="nav_story">Câu chuyện</a>
+      <a href="#founding" data-i18n="nav_offer">Ưu đãi</a>
+      <a href="#demo" class="nav-cta" data-i18n="nav_cta">Đặt demo</a>
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn active" data-lang="vi" onclick="setLang('vi')">VN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-inner">
+      <p class="eyebrow">The Ant Adventures &times; Mitel AI JSC</p>
+      <h1 data-i18n="hero_h1">Vẫn quản lý booking bằng <em>Excel, Zalo và trí nhớ</em>?</h1>
+      <p class="hero-subtitle" data-i18n="hero_sub">Wayflo là CRM sinh ra từ chính một công ty tour đang vận hành thật — quản lý trọn vòng đời khách hàng: từ lead, báo giá, booking đến vận hành tour và thanh toán.</p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary" data-i18n="hero_cta1">Đặt lịch demo miễn phí</a>
+        <a href="#story" class="btn btn-ghost" data-i18n="hero_cta2">Xem pilot thực tế</a>
+      </div>
+      <p class="hero-note" data-i18n="hero_note"><span>✓ Đang vận hành thật tại The Ant Adventures</span> &nbsp;·&nbsp; <span>✓ Demo 30 phút</span> &nbsp;·&nbsp; <span>✓ Cập nhật tính năng thường xuyên</span></p>
+    </div>
+    <div class="mock-wrap">
+      <div class="app-mock">
+        <div class="mock-bar"><span></span><span></span><span></span></div>
+        <div class="mock-body">
+          <div class="mock-side">
+            <div class="s-brand">🐜 The Ant Adventures<small>CRM System · Wayflo</small></div>
+            <div class="s-group">Sales &amp; Product</div>
+            <div class="s-item">◈ Dashboard CEO</div>
+            <div class="s-item">◎ Clients</div>
+            <div class="s-item">🤝 B2B Agents</div>
+            <div class="s-item active">◉ Sales Pipeline</div>
+            <div class="s-item">✦ Tour Design AI</div>
+            <div class="s-group">Operations</div>
+            <div class="s-item">▣ Bookings</div>
+            <div class="s-item">◫ Suppliers</div>
+            <div class="s-item">◑ Guides</div>
+            <div class="s-group">Finance</div>
+            <div class="s-item">◧ Finance</div>
+          </div>
+          <div class="mock-main">
+            <h4 data-i18n="mock_title">Sales Pipeline · Tháng 7</h4>
+            <div class="kpis">
+              <div class="kpi"><div class="k-label">Active Quotes</div><div class="k-val">24</div><div class="k-sub">8 drafted · 11 sent · 5 pending</div></div>
+              <div class="kpi"><div class="k-label">Confirmed Bookings</div><div class="k-val t">11</div><div class="k-sub">42 pax secured</div></div>
+              <div class="kpi"><div class="k-label">Realized Revenue</div><div class="k-val">$86.4K</div><div class="k-sub">YTD 2026</div></div>
+              <div class="kpi"><div class="k-label">Weighted Forecast</div><div class="k-val o">$124K</div><div class="k-sub">Probability-weighted</div></div>
+            </div>
+            <div class="pipeline">
+              <div class="pl-col">
+                <div class="pl-head">Inquiry</div>
+                <div class="pl-card"><b>Gđ. Johnson · 4 pax</b>Hạ Long – Sapa 8N<span class="tag navy">Referral</span></div>
+              </div>
+              <div class="pl-col">
+                <div class="pl-head">Designing</div>
+                <div class="pl-card"><b>Ms. Tanaka · 2 pax</b>Huế – Hội An 5N<span class="tag teal">Tour Design AI</span></div>
+              </div>
+              <div class="pl-col">
+                <div class="pl-head">Quoted</div>
+                <div class="pl-card"><b>Mr. Weber · 6 pax</b>Bắc – Trung 12N<span class="tag orange">Follow-up D+3</span></div>
+              </div>
+              <div class="pl-col">
+                <div class="pl-head">Negotiation</div>
+                <div class="pl-card"><b>Gđ. Martin · 8 pax</b>Mekong 4N<span class="tag orange">$12,800</span></div>
+              </div>
+              <div class="pl-col">
+                <div class="pl-head">Confirmed</div>
+                <div class="pl-card"><b>Gđ. Dubois · 5 pax</b>Nam VN 7N<span class="tag teal">Đã cọc 50%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="section section-muted" id="pain">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow" data-i18n="pain_eyebrow">Vấn đề</p>
+      <h2 data-i18n="pain_h2">Nghe quen không?</h2>
+      <p data-i18n="pain_sub">Những nỗi đau mà bất kỳ công ty tour nào cũng gặp khi vận hành bằng Excel và tin nhắn rời rạc.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card"><span class="num">01</span><h3 data-i18n="pain1_h">Quote thất lạc</h3><p data-i18n="pain1_p">Báo giá nằm rải rác trong email, Zalo, Word — không ai biết quote nào đang chờ khách trả lời.</p></div>
+      <div class="pain-card"><span class="num">02</span><h3 data-i18n="pain2_h">Quên follow-up</h3><p data-i18n="pain2_p">Khách hỏi rồi im lặng. Ba ngày sau mới nhớ ra thì khách đã đặt chỗ khác.</p></div>
+      <div class="pain-card"><span class="num">03</span><h3 data-i18n="pain3_h">Chi phí tính tay</h3><p data-i18n="pain3_p">Cost tour cộng bằng máy tính bỏ túi, sai một dòng khách sạn là lệch cả biên lợi nhuận.</p></div>
+      <div class="pain-card"><span class="num">04</span><h3 data-i18n="pain4_h">Công nợ mù mờ</h3><p data-i18n="pain4_p">Ai đã cọc, supplier nào chưa thanh toán, tỷ giá nào đang áp — chỉ kế toán mới (tạm) biết.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW -->
+<section class="section section-dark" id="workflow">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow" data-i18n="wf_eyebrow">Tính năng</p>
+      <h2 data-i18n="wf_h2">Một dòng chảy — từ lead đến thanh toán</h2>
+      <p data-i18n="wf_sub">Wayflo không phải CRM generic. Nó được thiết kế đúng theo quy trình của một công ty tour.</p>
+    </div>
+    <div class="wf-steps">
+      <div class="wf-step"><span class="wf-num">1</span><h3 data-i18n="wf1_h">Lead</h3><p data-i18n="wf1_p">Gom lead từ email, website, đại lý về một nơi. Chấm điểm và phân loại tự động.</p></div>
+      <div class="wf-step"><span class="wf-num">2</span><h3 data-i18n="wf2_h">Báo giá</h3><p data-i18n="wf2_p">Tạo quote theo mùa, theo nhóm khách trong vài phút — kèm nhắc follow-up tự động.</p></div>
+      <div class="wf-step"><span class="wf-num">3</span><h3 data-i18n="wf3_h">Booking</h3><p data-i18n="wf3_p">Chuyển quote thành booking một chạm. Theo dõi cọc, hạn thanh toán, trạng thái dịch vụ.</p></div>
+      <div class="wf-step"><span class="wf-num">4</span><h3 data-i18n="wf4_h">Vận hành</h3><p data-i18n="wf4_p">Briefing cho guide, xe, khách sạn, nhà hàng — mọi supplier nhận đúng thông tin, đúng lúc.</p></div>
+      <div class="wf-step"><span class="wf-num">5</span><h3 data-i18n="wf5_h">Thanh toán</h3><p data-i18n="wf5_p">Công nợ khách và supplier, đa tiền tệ, P&amp;L từng tour — rõ ràng đến từng đồng.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section" id="story">
+  <div class="container story-grid story">
+    <div>
+      <p class="eyebrow" data-i18n="story_eyebrow">Câu chuyện Wayflo</p>
+      <h2 data-i18n="story_h2">Được xây bởi chính người làm tour</h2>
+      <p data-i18n="story_p1">Wayflo ra đời từ hợp tác giữa <strong>The Ant Adventures</strong> — công ty du lịch inbound đang vận hành hàng trăm tour mỗi năm — và <strong>Mitel AI JSC</strong> — đội ngũ kỹ sư AI.</p>
+      <p data-i18n="story_p2">Chúng tôi không đoán xem công ty tour cần gì. Chúng tôi là công ty tour. Wayflo đã chạy pilot thành công và đang vận hành hàng ngày tại The Ant Adventures — mỗi tính năng đều được dùng thật, sửa thật trước khi đến tay bạn, và tiếp tục được cập nhật thường xuyên.</p>
+      <div class="quote"><span data-i18n="story_quote">"Trước đây mỗi quote mất 2 giờ và một buổi lục email. Giờ đội sales của tôi làm trong 15 phút — và không quote nào bị bỏ quên."</span><span class="who" data-i18n="story_who">— Phuc Vo · CEO The Ant Adventures · Khách hàng số 0 của Wayflo</span></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">85%</div><div class="lbl" data-i18n="stat1">Thời gian tạo quote giảm*</div></div>
+      <div class="stat"><div class="num o">0</div><div class="lbl" data-i18n="stat2">Lead bị bỏ quên follow-up*</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl" data-i18n="stat3">Booking theo dõi được trạng thái*</div></div>
+      <div class="stat"><div class="num o">1</div><div class="lbl" data-i18n="stat4">Màn hình cho cả quy trình</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDING CUSTOMERS -->
+<section class="section section-muted" id="founding">
+  <div class="container">
+    <div class="founding-box">
+      <div>
+        <div class="slots-chip"><span class="live"></span><span data-i18n="chip">Còn 6/10 suất Founding Customer</span></div>
+        <h2 data-i18n="found_h2">Đã pilot thành công — mở cho 10 công ty đầu tiên</h2>
+        <p data-i18n="found_p">Wayflo đã vận hành thật tại The Ant Adventures và chứng minh hiệu quả trên hàng trăm booking. Giờ chúng tôi mở cho 10 công ty tour đầu tiên — với quyền lợi Founding Customer không bao giờ lặp lại.</p>
+        <a href="#demo" class="btn btn-primary" style="margin-top:8px" data-i18n="found_cta">Giữ suất của bạn</a>
+      </div>
+      <ul class="perks">
+        <li><span class="check">✓</span><span data-i18n="perk1">Giá Founding Customer — <strong>khóa vĩnh viễn</strong>, không tăng về sau</span></li>
+        <li><span class="check">✓</span><span data-i18n="perk2">Onboarding 1-1 và chuyển dữ liệu từ Excel <strong>miễn phí</strong></span></li>
+        <li><span class="check">✓</span><span data-i18n="perk3">Tính năng cập nhật thường xuyên — <strong>đề xuất của bạn được ưu tiên</strong> phát triển</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO FORM -->
+<section class="section" id="demo">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow" data-i18n="demo_eyebrow">Bắt đầu</p>
+      <h2 data-i18n="demo_h2">Đặt lịch demo 30 phút</h2>
+      <p data-i18n="demo_sub">Xem Wayflo chạy trên đúng quy trình công ty bạn. Không cam kết, không cần thẻ.</p>
+    </div>
+    <div class="form-card">
+      <form id="demoForm">
+        <div class="field"><label data-i18n="f_name">Họ và tên</label><input type="text" data-i18n-ph="ph_name" placeholder="Nguyễn Văn A" required></div>
+        <div class="field"><label data-i18n="f_company">Tên công ty</label><input type="text" data-i18n-ph="ph_company" placeholder="Công ty du lịch ABC" required></div>
+        <div class="field"><label data-i18n="f_bookings">Số booking trung bình mỗi tháng</label>
+          <select required>
+            <option value="" data-i18n="opt0">— Chọn —</option>
+            <option data-i18n="opt1">Dưới 10</option>
+            <option>10 – 30</option>
+            <option>30 – 100</option>
+            <option data-i18n="opt4">Trên 100</option>
+          </select>
+        </div>
+        <div class="field"><label data-i18n="f_phone">Số điện thoại / Zalo</label><input type="tel" placeholder="09xx xxx xxx" required></div>
+        <button class="btn btn-primary" type="submit" data-i18n="f_submit">Đặt demo ngay →</button>
+      </form>
+      <p class="form-note" data-i18n="f_note">⚡ Chúng tôi phản hồi trong vòng <strong>2 giờ làm việc</strong>.</p>
+      <div class="quick-contact">
+        <a class="qc-btn zalo" href="https://zalo.me/0900000000" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#0068FF"/><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="9" fill="#fff">Zalo</text></svg>
+          <span data-i18n="qc_zalo">Chat Zalo ngay</span>
+        </a>
+        <a class="qc-btn fb" href="https://m.me/wayflocrm" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path d="M15.5 12.6h-2.3V19h-2.7v-6.4H8.8v-2.4h1.7V8.7c0-1.8 1.1-2.8 2.7-2.8.8 0 1.6.1 1.6.1v1.9h-.9c-.9 0-1.1.5-1.1 1v1.3h2.1l-.4 2.4z" fill="#fff"/></svg>
+          <span data-i18n="qc_fb">Nhắn Messenger</span>
+        </a>
+      </div>
+      <p class="qc-label" data-i18n="qc_label">Chưa sẵn sàng demo? Nhắn Zalo hỏi bất cứ điều gì — trả lời bởi người làm tour thật, không phải bot.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container foot-inner">
+    <div class="foot-logo"><span class="way">Way</span><span class="flo">flo</span></div>
+    <div data-i18n="foot_text">Hợp tác giữa The Ant Adventures &times; Mitel AI JSC · © 2026 Wayflo</div>
+    <div class="foot-social">
+      <span>hello@wayflo.vn</span>
+      <a href="https://www.facebook.com/wayflocrm" target="_blank" title="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M15.5 12.6h-2.3V19h-2.7v-6.4H8.8v-2.4h1.7V8.7c0-1.8 1.1-2.8 2.7-2.8.8 0 1.6.1 1.6.1v1.9h-.9c-.9 0-1.1.5-1.1 1v1.3h2.1l-.4 2.4z" fill="#fff"/></svg>
+      </a>
+      <a href="https://zalo.me/0900000000" target="_blank" title="Zalo">
+        <svg width="18" height="18" viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="9" fill="#fff">Zalo</text></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CONTACT -->
+<div class="float-contact">
+  <a class="fc-btn fb" href="https://m.me/wayflocrm" target="_blank">
+    <span class="tip" data-i18n="tip_fb">Nhắn Messenger cho Wayflo</span>
+    <svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.3 1.9.4 2.9.4 5.5 0 10-4.1 10-9.2S17.5 2 12 2zm1 12.4-2.5-2.7-5 2.7 5.5-5.8 2.6 2.7 4.9-2.7-5.5 5.8z" fill="#fff"/></svg>
+  </a>
+  <a class="fc-btn zalo" href="https://zalo.me/0900000000" target="_blank">
+    <span class="tip" data-i18n="tip_zalo">Chat Zalo — phản hồi trong 2 giờ</span>
+    <svg width="30" height="30" viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="8.5" fill="#fff">Zalo</text></svg>
+  </a>
+</div>
+
+<script>
+const I18N = {
+  nav_features:{vi:"Tính năng",en:"Features"},
+  nav_story:{vi:"Câu chuyện",en:"Our Story"},
+  nav_offer:{vi:"Ưu đãi",en:"Offer"},
+  nav_cta:{vi:"Đặt demo",en:"Book a demo"},
+  hero_h1:{vi:"Vẫn quản lý booking bằng <em>Excel, Zalo và trí nhớ</em>?",en:"Still managing bookings with <em>Excel, chat apps and memory</em>?"},
+  hero_sub:{vi:"Wayflo là CRM sinh ra từ chính một công ty tour đang vận hành thật — quản lý trọn vòng đời khách hàng: từ lead, báo giá, booking đến vận hành tour và thanh toán.",en:"Wayflo is a CRM born inside a real, working tour operator — managing the full client lifecycle: from lead and quote to booking, tour operations and payment."},
+  hero_cta1:{vi:"Đặt lịch demo miễn phí",en:"Book a free demo"},
+  hero_cta2:{vi:"Xem pilot thực tế",en:"See the pilot in action"},
+  hero_note:{vi:"<span>✓ Đang vận hành thật tại The Ant Adventures</span> &nbsp;·&nbsp; <span>✓ Demo 30 phút</span> &nbsp;·&nbsp; <span>✓ Cập nhật tính năng thường xuyên</span>",en:"<span>✓ Running live at The Ant Adventures</span> &nbsp;·&nbsp; <span>✓ 30-minute demo</span> &nbsp;·&nbsp; <span>✓ Frequent feature updates</span>"},
+  mock_title:{vi:"Sales Pipeline · Tháng 7",en:"Sales Pipeline · July"},
+  pain_eyebrow:{vi:"Vấn đề",en:"The Problem"},
+  pain_h2:{vi:"Nghe quen không?",en:"Sound familiar?"},
+  pain_sub:{vi:"Những nỗi đau mà bất kỳ công ty tour nào cũng gặp khi vận hành bằng Excel và tin nhắn rời rạc.",en:"The daily pains every tour operator knows when running on spreadsheets and scattered messages."},
+  pain1_h:{vi:"Quote thất lạc",en:"Lost quotes"},
+  pain1_p:{vi:"Báo giá nằm rải rác trong email, Zalo, Word — không ai biết quote nào đang chờ khách trả lời.",en:"Quotes scattered across email, chat and Word files — nobody knows which ones are waiting on a client."},
+  pain2_h:{vi:"Quên follow-up",en:"Missed follow-ups"},
+  pain2_p:{vi:"Khách hỏi rồi im lặng. Ba ngày sau mới nhớ ra thì khách đã đặt chỗ khác.",en:"A client asks, then goes quiet. By the time you remember, they've booked elsewhere."},
+  pain3_h:{vi:"Chi phí tính tay",en:"Manual costing"},
+  pain3_p:{vi:"Cost tour cộng bằng máy tính bỏ túi, sai một dòng khách sạn là lệch cả biên lợi nhuận.",en:"Tour costs added up by hand — one wrong hotel line and your whole margin is off."},
+  pain4_h:{vi:"Công nợ mù mờ",en:"Murky payables"},
+  pain4_p:{vi:"Ai đã cọc, supplier nào chưa thanh toán, tỷ giá nào đang áp — chỉ kế toán mới (tạm) biết.",en:"Who paid a deposit, which supplier is still owed, which exchange rate applies — only your accountant (sort of) knows."},
+  wf_eyebrow:{vi:"Tính năng",en:"Features"},
+  wf_h2:{vi:"Một dòng chảy — từ lead đến thanh toán",en:"One flow — from lead to payment"},
+  wf_sub:{vi:"Wayflo không phải CRM generic. Nó được thiết kế đúng theo quy trình của một công ty tour.",en:"Wayflo is not a generic CRM. It is built around the exact workflow of a tour operator."},
+  wf1_h:{vi:"Lead",en:"Lead"},
+  wf1_p:{vi:"Gom lead từ email, website, đại lý về một nơi. Chấm điểm và phân loại tự động.",en:"Gather leads from email, website and agents in one place. Auto-scored and segmented."},
+  wf2_h:{vi:"Báo giá",en:"Quote"},
+  wf2_p:{vi:"Tạo quote theo mùa, theo nhóm khách trong vài phút — kèm nhắc follow-up tự động.",en:"Build seasonal, group-based quotes in minutes — with automatic follow-up reminders."},
+  wf3_h:{vi:"Booking",en:"Booking"},
+  wf3_p:{vi:"Chuyển quote thành booking một chạm. Theo dõi cọc, hạn thanh toán, trạng thái dịch vụ.",en:"Turn a quote into a booking in one click. Track deposits, due dates and service status."},
+  wf4_h:{vi:"Vận hành",en:"Operations"},
+  wf4_p:{vi:"Briefing cho guide, xe, khách sạn, nhà hàng — mọi supplier nhận đúng thông tin, đúng lúc.",en:"Briefings for guides, drivers, hotels and restaurants — every supplier gets the right info at the right time."},
+  wf5_h:{vi:"Thanh toán",en:"Payment"},
+  wf5_p:{vi:"Công nợ khách và supplier, đa tiền tệ, P&L từng tour — rõ ràng đến từng đồng.",en:"Client and supplier balances, multi-currency, per-tour P&L — clear to the last dollar."},
+  story_eyebrow:{vi:"Câu chuyện Wayflo",en:"The Wayflo Story"},
+  story_h2:{vi:"Được xây bởi chính người làm tour",en:"Built by tour operators themselves"},
+  story_p1:{vi:"Wayflo ra đời từ hợp tác giữa <strong>The Ant Adventures</strong> — công ty du lịch inbound đang vận hành hàng trăm tour mỗi năm — và <strong>Mitel AI JSC</strong> — đội ngũ kỹ sư AI.",en:"Wayflo was born from a partnership between <strong>The Ant Adventures</strong> — an inbound tour operator running hundreds of tours a year — and <strong>Mitel AI JSC</strong> — a team of AI engineers."},
+  story_p2:{vi:"Chúng tôi không đoán xem công ty tour cần gì. Chúng tôi là công ty tour. Wayflo đã chạy pilot thành công và đang vận hành hàng ngày tại The Ant Adventures — mỗi tính năng đều được dùng thật, sửa thật trước khi đến tay bạn, và tiếp tục được cập nhật thường xuyên.",en:"We don't guess what tour operators need. We are one. Wayflo completed a successful pilot and runs daily at The Ant Adventures — every feature is used and refined in real operations before it reaches you, and keeps improving with frequent updates."},
+  story_quote:{vi:"\"Trước đây mỗi quote mất 2 giờ và một buổi lục email. Giờ đội sales của tôi làm trong 15 phút — và không quote nào bị bỏ quên.\"",en:"\"A quote used to take 2 hours plus an afternoon digging through email. Now my sales team does it in 15 minutes — and no quote ever slips through.\""},
+  story_who:{vi:"— Phuc Vo · CEO The Ant Adventures · Khách hàng số 0 của Wayflo",en:"— Phuc Vo · CEO, The Ant Adventures · Wayflo's customer zero"},
+  stat1:{vi:"Thời gian tạo quote giảm*",en:"Less time per quote*"},
+  stat2:{vi:"Lead bị bỏ quên follow-up*",en:"Leads lost to missed follow-up*"},
+  stat3:{vi:"Booking theo dõi được trạng thái*",en:"Bookings with tracked status*"},
+  stat4:{vi:"Màn hình cho cả quy trình",en:"Screen for the whole workflow"},
+  chip:{vi:"Còn 6/10 suất Founding Customer",en:"6 of 10 Founding Customer seats left"},
+  found_h2:{vi:"Đã pilot thành công — mở cho 10 công ty đầu tiên",en:"Pilot proven — now open to the first 10 companies"},
+  found_p:{vi:"Wayflo đã vận hành thật tại The Ant Adventures và chứng minh hiệu quả trên hàng trăm booking. Giờ chúng tôi mở cho 10 công ty tour đầu tiên — với quyền lợi Founding Customer không bao giờ lặp lại.",en:"Wayflo runs live at The Ant Adventures and has proven itself across hundreds of bookings. We're now opening to the first 10 tour companies — with Founding Customer benefits that will never be repeated."},
+  found_cta:{vi:"Giữ suất của bạn",en:"Reserve your seat"},
+  perk1:{vi:"Giá Founding Customer — <strong>khóa vĩnh viễn</strong>, không tăng về sau",en:"Founding Customer pricing — <strong>locked forever</strong>, never increases"},
+  perk2:{vi:"Onboarding 1-1 và chuyển dữ liệu từ Excel <strong>miễn phí</strong>",en:"1-on-1 onboarding and <strong>free</strong> data migration from Excel"},
+  perk3:{vi:"Tính năng cập nhật thường xuyên — <strong>đề xuất của bạn được ưu tiên</strong> phát triển",en:"Frequent feature updates — <strong>your requests get priority</strong> on the roadmap"},
+  demo_eyebrow:{vi:"Bắt đầu",en:"Get Started"},
+  demo_h2:{vi:"Đặt lịch demo 30 phút",en:"Book a 30-minute demo"},
+  demo_sub:{vi:"Xem Wayflo chạy trên đúng quy trình công ty bạn. Không cam kết, không cần thẻ.",en:"See Wayflo running on your company's exact workflow. No commitment, no credit card."},
+  f_name:{vi:"Họ và tên",en:"Full name"},
+  ph_name:{vi:"Nguyễn Văn A",en:"John Smith"},
+  f_company:{vi:"Tên công ty",en:"Company name"},
+  ph_company:{vi:"Công ty du lịch ABC",en:"ABC Travel Co."},
+  f_bookings:{vi:"Số booking trung bình mỗi tháng",en:"Average bookings per month"},
+  opt0:{vi:"— Chọn —",en:"— Select —"},
+  opt1:{vi:"Dưới 10",en:"Under 10"},
+  opt4:{vi:"Trên 100",en:"Over 100"},
+  f_phone:{vi:"Số điện thoại / Zalo",en:"Phone / WhatsApp"},
+  f_submit:{vi:"Đặt demo ngay →",en:"Book demo now →"},
+  f_note:{vi:"⚡ Chúng tôi phản hồi trong vòng <strong>2 giờ làm việc</strong>.",en:"⚡ We reply within <strong>2 business hours</strong>."},
+  qc_zalo:{vi:"Chat Zalo ngay",en:"Chat on Zalo"},
+  qc_fb:{vi:"Nhắn Messenger",en:"Message us"},
+  qc_label:{vi:"Chưa sẵn sàng demo? Nhắn Zalo hỏi bất cứ điều gì — trả lời bởi người làm tour thật, không phải bot.",en:"Not ready for a demo? Message us anything — answered by real tour operators, not a bot."},
+  foot_text:{vi:"Hợp tác giữa The Ant Adventures &times; Mitel AI JSC · © 2026 Wayflo",en:"A partnership between The Ant Adventures &times; Mitel AI JSC · © 2026 Wayflo"},
+  tip_fb:{vi:"Nhắn Messenger cho Wayflo",en:"Message Wayflo on Messenger"},
+  tip_zalo:{vi:"Chat Zalo — phản hồi trong 2 giờ",en:"Chat on Zalo — reply within 2 hours"},
+  alert:{vi:"✓ Đã nhận thông tin! Đội Wayflo sẽ liên hệ trong 2 giờ làm việc.",en:"✓ Got it! The Wayflo team will contact you within 2 business hours."}
+};
+let currentLang = "vi";
+function setLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(I18N[k] && I18N[k][lang] !== undefined) el.innerHTML = I18N[k][lang];
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el=>{
+    const k = el.getAttribute("data-i18n-ph");
+    if(I18N[k] && I18N[k][lang] !== undefined) el.placeholder = I18N[k][lang];
+  });
+  document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
+  try{ localStorage.setItem("wayflo_lang", lang); }catch(e){}
+}
+document.getElementById("demoForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  alert(I18N.alert[currentLang]);
+});
+try{
+  const saved = localStorage.getItem("wayflo_lang");
+  if(saved === "en") setLang("en");
+}catch(e){}
+</script>
+
+</body>
+</html>
