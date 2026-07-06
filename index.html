@@ -71,8 +71,14 @@ a{color:inherit;text-decoration:none}
 .lang-btn{border:none;background:transparent;padding:5px 12px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--ink-soft);font-family:inherit}
 .lang-btn.active{background:var(--ink);color:#fff}
 
-/* Hero */
-.hero{padding:96px 0 88px;background:linear-gradient(180deg,rgba(246,246,244,.6) 0%,rgba(255,255,255,1) 100%)}
+/* Section background photos — Vietnam travel imagery with soft overlays for readability */
+.hero,#workflow,#founding,#demo{background-size:cover;background-position:center;background-repeat:no-repeat}
+
+/* Hero — Ninh Binh sampan boats */
+.hero{padding:96px 0 88px;background-image:
+  linear-gradient(180deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.72) 45%,rgba(255,255,255,.96) 100%),
+  url("https://images.unsplash.com/photo-1528127269322-539801943592?w=1920&q=80");
+  background-position:center 65%}
 .hero-inner{max-width:760px;margin:0 auto;text-align:center}
 .hero .eyebrow{color:var(--orange)}
 .hero h1 em{font-style:italic;color:var(--teal-dark)}
@@ -119,9 +125,14 @@ a{color:inherit;text-decoration:none}
 .pain-card h3{margin-bottom:8px}
 .pain-card p{font-size:.92rem;margin:0}
 
-/* Workflow (dark) */
-.wf-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
-.wf-step{background:var(--bg-dark);padding:34px 24px}
+/* Workflow (dark) — Sapa rice terraces, photo visible under soft veil */
+#workflow{background-image:
+  linear-gradient(180deg,rgba(22,24,26,.66) 0%,rgba(22,24,26,.6) 100%),
+  url("https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=1920&q=80")}
+#workflow .section-header h2,#workflow .section-header p{text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.wf-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18)}
+.wf-step{background:rgba(22,24,26,.55);backdrop-filter:blur(3px);padding:34px 24px}
+.wf-step p{color:#D8DCE0}
 .wf-num{font-family:var(--font-display);font-size:1.5rem;color:var(--teal);display:block;margin-bottom:14px}
 .wf-step h3{color:#fff;margin-bottom:8px;font-size:1rem}
 .wf-step p{font-size:.88rem;margin:0}
@@ -138,8 +149,21 @@ a{color:inherit;text-decoration:none}
 .stat .num.o{color:var(--orange)}
 .stat .lbl{font-size:.85rem;color:var(--ink-soft);margin-top:10px}
 
-/* Founding */
-.founding-box{border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:64px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+/* Why Wayflo — founder narrative, editorial */
+.why-inner{max-width:740px;margin:0 auto}
+.why-inner .eyebrow,.why-inner h2{text-align:center}
+.why-inner h2{margin-bottom:36px}
+.why-p{font-size:1.08rem;line-height:1.85;color:var(--ink-soft);margin-bottom:24px}
+.why-p:first-of-type::first-letter{font-family:var(--font-display);font-size:3.4rem;font-weight:600;color:var(--teal-dark);float:left;line-height:.9;padding:6px 12px 0 0}
+.why-p strong{color:var(--ink)}
+.why-sign{text-align:right;font-weight:600;font-size:.92rem;color:var(--ink);margin-top:30px;letter-spacing:.02em}
+.why-sign small{display:block;font-weight:500;color:var(--ink-soft);font-size:.82rem;margin-top:2px}
+
+/* Founding — Hoi An lanterns under light veil */
+#founding{background-image:
+  linear-gradient(180deg,rgba(246,246,244,.94) 0%,rgba(246,246,244,.88) 100%),
+  url("https://images.unsplash.com/photo-1535920527002-b35e96722eb9?w=1920&q=80")}
+.founding-box{border:1px solid var(--line);background:rgba(255,255,255,.96);border-radius:var(--radius);padding:64px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;box-shadow:0 20px 50px -30px rgba(22,24,26,.25)}
 .slots-chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--orange);color:var(--orange);border-radius:999px;padding:6px 16px;font-size:.8rem;font-weight:600;letter-spacing:.04em;margin-bottom:20px}
 .slots-chip .live{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse2 1.6s infinite}
 @keyframes pulse2{0%,100%{opacity:1}50%{opacity:.35}}
@@ -152,21 +176,31 @@ a{color:inherit;text-decoration:none}
 .perks .check{color:var(--teal-dark);font-weight:700;font-size:1rem;line-height:1.6}
 .perks li>span:last-child{flex:1}
 
-/* Demo form */
-.form-card{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:52px}
-.form-card h2{text-align:center;margin-bottom:10px}
-.field{margin-bottom:20px}
-.field label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:.02em}
-.field input,.field select{width:100%;padding:13px 16px;border:1px solid #D4D4D2;border-radius:var(--radius);font-size:.95rem;font-family:inherit;color:var(--ink);background:#fff}
-.field input:focus,.field select:focus{outline:none;border-color:var(--teal)}
-.form-card .btn{width:100%;font-size:1rem;padding:15px;border:none}
-.form-note{text-align:center;font-size:.82rem;color:var(--ink-soft);margin-top:18px}
-.quick-contact{display:flex;gap:12px;justify-content:center;margin-top:26px;padding-top:26px;border-top:1px solid var(--line)}
-.qc-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:var(--radius);font-size:.88rem;font-weight:600;border:1px solid var(--line);transition:.18s}
-.qc-btn:hover{border-color:var(--ink)}
+/* Demo — Ha Long Bay, dark cinematic, white fields on photo */
+#demo{background-image:
+  linear-gradient(180deg,rgba(18,26,30,.62) 0%,rgba(18,26,30,.55) 100%),
+  url("https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=1920&q=80")}
+#demo .section-header{margin-bottom:40px}
+#demo .eyebrow{color:#F5C9B8}
+#demo h2{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+#demo .section-header p{color:#E8ECEE;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.demo-form{max-width:1000px;margin:0 auto}
+.demo-fields{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+.demo-form input,.demo-form select{width:100%;padding:16px 18px;border:none;border-radius:8px;font-size:.95rem;font-family:inherit;color:var(--ink);background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+.demo-form input::placeholder{color:#8A9096}
+.demo-form input:focus,.demo-form select:focus{outline:2px solid var(--teal)}
+.demo-wide{grid-column:1/-1}
+.form-note{text-align:center;font-size:.95rem;color:#F2F5F6;margin:22px 0 26px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.form-note strong{color:#fff}
+.demo-submit{display:flex;justify-content:center}
+.demo-submit .btn{background:#fff;color:var(--ink);font-size:1rem;padding:16px 44px;border:none;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.demo-submit .btn:hover{background:var(--orange);color:#fff}
+.quick-contact{display:flex;gap:12px;justify-content:center;margin-top:32px}
+.qc-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:8px;font-size:.88rem;font-weight:600;background:rgba(255,255,255,.94);transition:.18s}
+.qc-btn:hover{background:#fff;transform:translateY(-2px)}
 .qc-btn.zalo{color:#0068FF}
 .qc-btn.fb{color:#1877F2}
-.qc-label{text-align:center;font-size:.82rem;color:var(--ink-soft);margin-top:20px}
+.qc-label{text-align:center;font-size:.85rem;color:#E4E9EB;margin-top:18px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
 
 /* Footer */
 footer{background:var(--bg-dark);color:#9BA1A7;padding:52px 0;font-size:.88rem}
@@ -195,8 +229,11 @@ footer{background:var(--bg-dark);color:#9BA1A7;padding:52px 0;font-size:.88rem}
   .wf-steps{grid-template-columns:1fr 1fr}
   .story-grid,.founding-box{grid-template-columns:1fr;gap:44px}
   .founding-box{padding:40px 28px}
-  .form-card{padding:36px 24px}
+  .demo-fields{grid-template-columns:1fr 1fr}
   .site-nav a:not(.nav-cta){display:none}
+}
+@media(max-width:560px){
+  .demo-fields{grid-template-columns:1fr}
 }
 @media(max-width:560px){
   .pain-grid,.wf-steps{grid-template-columns:1fr}
@@ -348,6 +385,20 @@ footer{background:var(--bg-dark);color:#9BA1A7;padding:52px 0;font-size:.88rem}
   </div>
 </section>
 
+<!-- WHY WAYFLO -->
+<section class="section section-muted" id="why">
+  <div class="container">
+    <div class="why-inner">
+      <p class="eyebrow" data-i18n="why_eyebrow">Từ người sáng lập</p>
+      <h2 data-i18n="why_h2">Tại sao là Wayflo?</h2>
+      <p class="why-p" data-i18n="why_p1">Hơn 15 năm trong ngành du lịch, tôi đã đi qua gần như mọi vị trí: hướng dẫn viên, điều hành, sales, rồi sáng lập công ty tour của riêng mình. Ở vị trí nào, tôi cũng gặp lại đúng một vấn đề — <strong>thông tin nằm rải rác khắp nơi, còn quy trình thì nằm trong đầu vài người</strong>.</p>
+      <p class="why-p" data-i18n="why_p2">Một inquiry đến lúc nửa đêm. Một bản thiết kế tour sửa đến phiên bản thứ bảy. Một outline gửi khách rồi… không ai nhớ đã hứa gì. Booking chốt xong, cuộc đua mới thật sự bắt đầu: đặt phòng, giữ chỗ, briefing guide, đối soát công nợ. Mỗi bước là một file Excel, một đoạn chat, một lời dặn miệng.</p>
+      <p class="why-p" data-i18n="why_p3">Wayflo là câu trả lời tôi ước mình có từ 15 năm trước: <strong>một dòng chảy duy nhất</strong> — nhận inquiry, thiết kế tour, outline, báo giá, booking, vận hành, thanh toán — nơi mọi thông tin tự tìm đến đúng người, đúng lúc. Không phải phần mềm viết bởi người ngoài nhìn vào ngành du lịch, mà bởi chính người đã sống trong nó.</p>
+      <p class="why-sign" data-i18n="why_sign">— Tai Pham<small>Founder · The Ant Adventures &amp; Wayflo</small></p>
+    </div>
+  </div>
+</section>
+
 <!-- FOUNDING CUSTOMERS -->
 <section class="section section-muted" id="founding">
   <div class="container">
@@ -375,23 +426,24 @@ footer{background:var(--bg-dark);color:#9BA1A7;padding:52px 0;font-size:.88rem}
       <h2 data-i18n="demo_h2">Đặt lịch demo 30 phút</h2>
       <p data-i18n="demo_sub">Xem Wayflo chạy trên đúng quy trình công ty bạn. Không cam kết, không cần thẻ.</p>
     </div>
-    <div class="form-card">
+    <div class="demo-form">
       <form id="demoForm">
-        <div class="field"><label data-i18n="f_name">Họ và tên</label><input type="text" data-i18n-ph="ph_name" placeholder="Nguyễn Văn A" required></div>
-        <div class="field"><label data-i18n="f_company">Tên công ty</label><input type="text" data-i18n-ph="ph_company" placeholder="Công ty du lịch ABC" required></div>
-        <div class="field"><label data-i18n="f_bookings">Số booking trung bình mỗi tháng</label>
+        <div class="demo-fields">
+          <input type="text" data-i18n-ph="f_name" placeholder="Họ và tên" required>
+          <input type="text" data-i18n-ph="f_company" placeholder="Tên công ty" required>
+          <input type="tel" data-i18n-ph="f_phone" placeholder="Số điện thoại / Zalo" required>
           <select required>
-            <option value="" data-i18n="opt0">— Chọn —</option>
+            <option value="" data-i18n="sel_bookings">— Số booking mỗi tháng —</option>
             <option data-i18n="opt1">Dưới 10</option>
             <option>10 – 30</option>
             <option>30 – 100</option>
             <option data-i18n="opt4">Trên 100</option>
           </select>
+          <input class="demo-wide" type="text" data-i18n-ph="ph_wish" placeholder="Bạn muốn xem gì trong buổi demo? (không bắt buộc)">
         </div>
-        <div class="field"><label data-i18n="f_phone">Số điện thoại / Zalo</label><input type="tel" placeholder="09xx xxx xxx" required></div>
-        <button class="btn btn-primary" type="submit" data-i18n="f_submit">Đặt demo ngay →</button>
+        <p class="form-note" data-i18n="f_note">⚡ Điền thông tin bên dưới — chúng tôi phản hồi trong vòng <strong>2 giờ làm việc</strong>.</p>
+        <div class="demo-submit"><button class="btn" type="submit" data-i18n="f_submit">Đặt demo ngay →</button></div>
       </form>
-      <p class="form-note" data-i18n="f_note">⚡ Chúng tôi phản hồi trong vòng <strong>2 giờ làm việc</strong>.</p>
       <div class="quick-contact">
         <a class="qc-btn zalo" href="https://zalo.me/0900000000" target="_blank">
           <svg width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#0068FF"/><text x="12" y="16" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="9" fill="#fff">Zalo</text></svg>
@@ -482,6 +534,12 @@ const I18N = {
   stat2:{vi:"Lead bị bỏ quên follow-up*",en:"Leads lost to missed follow-up*"},
   stat3:{vi:"Booking theo dõi được trạng thái*",en:"Bookings with tracked status*"},
   stat4:{vi:"Màn hình cho cả quy trình",en:"Screen for the whole workflow"},
+  why_eyebrow:{vi:"Từ người sáng lập",en:"From the Founder"},
+  why_h2:{vi:"Tại sao là Wayflo?",en:"Why Wayflo?"},
+  why_p1:{vi:"Hơn 15 năm trong ngành du lịch, tôi đã đi qua gần như mọi vị trí: hướng dẫn viên, điều hành, sales, rồi sáng lập công ty tour của riêng mình. Ở vị trí nào, tôi cũng gặp lại đúng một vấn đề — <strong>thông tin nằm rải rác khắp nơi, còn quy trình thì nằm trong đầu vài người</strong>.",en:"In more than 15 years in travel — as a guide, an operator, in sales, and finally founding my own tour company — I kept meeting the same problem in every role: <strong>information scattered everywhere, and processes living in a few people's heads</strong>."},
+  why_p2:{vi:"Một inquiry đến lúc nửa đêm. Một bản thiết kế tour sửa đến phiên bản thứ bảy. Một outline gửi khách rồi… không ai nhớ đã hứa gì. Booking chốt xong, cuộc đua mới thật sự bắt đầu: đặt phòng, giữ chỗ, briefing guide, đối soát công nợ. Mỗi bước là một file Excel, một đoạn chat, một lời dặn miệng.",en:"An inquiry lands at midnight. A tour design hits its seventh revision. An outline goes to the client and… nobody remembers what was promised. And once the booking is confirmed, the real race begins: rooms, holds, guide briefings, supplier reconciliation. Every step lives in its own spreadsheet, chat thread, or verbal note."},
+  why_p3:{vi:"Wayflo là câu trả lời tôi ước mình có từ 15 năm trước: <strong>một dòng chảy duy nhất</strong> — nhận inquiry, thiết kế tour, outline, báo giá, booking, vận hành, thanh toán — nơi mọi thông tin tự tìm đến đúng người, đúng lúc. Không phải phần mềm viết bởi người ngoài nhìn vào ngành du lịch, mà bởi chính người đã sống trong nó.",en:"Wayflo is the answer I wish I'd had 15 years ago: <strong>one single flow</strong> — inquiry, tour design, outline, quote, booking, operations, payment — where information finds the right person at the right time. Not software written by outsiders looking in at travel, but by someone who has lived inside it."},
+  why_sign:{vi:"— Tai Pham<small>Founder · The Ant Adventures &amp; Wayflo</small>",en:"— Tai Pham<small>Founder · The Ant Adventures &amp; Wayflo</small>"},
   chip:{vi:"Còn 6/10 suất Founding Customer",en:"6 of 10 Founding Customer seats left"},
   found_h2:{vi:"Đã pilot thành công — mở cho 10 công ty đầu tiên",en:"Pilot proven — now open to the first 10 companies"},
   found_p:{vi:"Wayflo đã vận hành thật tại The Ant Adventures và chứng minh hiệu quả trên hàng trăm booking. Giờ chúng tôi mở cho 10 công ty tour đầu tiên — với quyền lợi Founding Customer không bao giờ lặp lại.",en:"Wayflo runs live at The Ant Adventures and has proven itself across hundreds of bookings. We're now opening to the first 10 tour companies — with Founding Customer benefits that will never be repeated."},
@@ -496,13 +554,13 @@ const I18N = {
   ph_name:{vi:"Nguyễn Văn A",en:"John Smith"},
   f_company:{vi:"Tên công ty",en:"Company name"},
   ph_company:{vi:"Công ty du lịch ABC",en:"ABC Travel Co."},
-  f_bookings:{vi:"Số booking trung bình mỗi tháng",en:"Average bookings per month"},
-  opt0:{vi:"— Chọn —",en:"— Select —"},
+  sel_bookings:{vi:"— Số booking mỗi tháng —",en:"— Bookings per month —"},
   opt1:{vi:"Dưới 10",en:"Under 10"},
   opt4:{vi:"Trên 100",en:"Over 100"},
   f_phone:{vi:"Số điện thoại / Zalo",en:"Phone / WhatsApp"},
+  ph_wish:{vi:"Bạn muốn xem gì trong buổi demo? (không bắt buộc)",en:"What would you like to see in the demo? (optional)"},
   f_submit:{vi:"Đặt demo ngay →",en:"Book demo now →"},
-  f_note:{vi:"⚡ Chúng tôi phản hồi trong vòng <strong>2 giờ làm việc</strong>.",en:"⚡ We reply within <strong>2 business hours</strong>."},
+  f_note:{vi:"⚡ Điền thông tin bên dưới — chúng tôi phản hồi trong vòng <strong>2 giờ làm việc</strong>.",en:"⚡ Fill in your details — we reply within <strong>2 business hours</strong>."},
   qc_zalo:{vi:"Chat Zalo ngay",en:"Chat on Zalo"},
   qc_fb:{vi:"Nhắn Messenger",en:"Message us"},
   qc_label:{vi:"Chưa sẵn sàng demo? Nhắn Zalo hỏi bất cứ điều gì — trả lời bởi người làm tour thật, không phải bot.",en:"Not ready for a demo? Message us anything — answered by real tour operators, not a bot."},
